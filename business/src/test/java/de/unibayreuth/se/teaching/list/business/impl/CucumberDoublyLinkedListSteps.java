@@ -78,4 +78,27 @@ public class CucumberDoublyLinkedListSteps {
     public void theListShouldContainElement(int count) {
         Assertions.assertEquals(count, list.getLength());
     }
+
+    @When("I insert an element with value {double}")
+    public void i_insert_an_element_with_value(Double double1) {
+        this.value = double1;
+        list.insert(value);
+    }
+
+    @Then("the list should contain {double}")
+    public void the_list_should_contain(Double double1) {
+        double[] list_as_array = list.asArray();
+        for (double d : list_as_array)
+        {
+            if (d == double1)
+            {
+                Assertions.assertEquals(d, double1);
+            }
+        }
+    }
+
+    @Then("the list should be sorted:")
+    public void the_list_should_be_sorted(io.cucumber.datatable.DataTable dataTable) {
+        logger.info("%s not implemented yet.".formatted(Thread.currentThread().getStackTrace()[1].getMethodName()));
+    }
 }
